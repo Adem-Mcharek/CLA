@@ -1,0 +1,70 @@
+
+{% extends "base.html" %} 
+{% block title %}Home{% endblock %}
+ {% block content%}
+ <head>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Collapse borders */
+        }
+        th, td {
+            border: 1px solid #ddd; /* Add border to table cells */
+            padding: 8px; /* Add padding inside table cells */
+            text-align: left; /* Align text to the left */
+        }
+        th {
+            background-color: white; /* Darker background color for header */
+            color: #0bfcbf; /* White text color for header */
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* Lighter background for even rows */
+        }
+        tr:hover {
+            background-color: #ddd; /* Highlight row on hover */
+        }
+        a {
+            color: #0af8e4; /* Green color for links to match header */
+            text-decoration: none; /* Remove underline from links */
+        }
+        a:hover {
+            text-decoration: underline; /* Add underline on hover for links */
+        }
+    </style>
+</head>
+
+<h1 align="center">listings :</h1>
+
+
+
+<table  class="sortable" border="1">
+  <thead>
+      <tr>
+          <th>ID</th>
+          <th>Company</th>
+          <th>Role</th>
+          <th>Location</th>
+          <th>Date</th>
+          <th>Application</th>
+          <th>Link</th>
+      </tr>
+  </thead>
+  <tbody>
+      {% for job in jobs %}
+      <tr>
+          <td>{{ job.id }}</td>
+          <td>{{ job.Company }}</td>
+          <td>{{ job.Role }}</td>
+          <td>{{ job.Location }}</td>
+          <td>{{ job.Date }}</td>
+          <td><a href="{{ job.Application }}">Link</a></td>
+        <td><a href="{{ job.Link }}">Link</a></td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+
+
+
+{% endblock %}
