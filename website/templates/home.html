@@ -30,6 +30,64 @@
         a:hover {
             text-decoration: underline; /* Add underline on hover for links */
         }
+
+        /* Popup container - can be anything you want */
+        .popup {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        }
+
+        /* The actual popup */
+        .popup .popuptext {
+        visibility: hidden;
+        width: 500px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 8px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -80px;
+        }
+
+        /* Popup arrow */
+        .popup .popuptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+        }
+
+        /* Toggle this class - hide and show the popup */
+        .popup .show {
+        visibility: visible;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
+        }
+
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+        from {opacity: 0;} 
+        to {opacity: 1;}
+        }
+
+        @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity:1 ;}
+        }
+
     </style>
 </head>
 
@@ -47,6 +105,9 @@
           <th>Date</th>
           <th>Application</th>
           <th>Link</th>
+          <th>Info</th>
+          <th>Match Rating</th>
+          <th>Cover Leter</th>
       </tr>
   </thead>
   <tbody>
@@ -59,12 +120,60 @@
           <td>{{ job.Date }}</td>
           <td><a href="{{ job.Application }}">Link</a></td>
         <td><a href="{{ job.Link }}">Link</a></td>
+        <td><div class="popup" onclick="myFunction()">Click me!
+            <span class="popuptext" id="myPopup">{{ job.info }}</span>
+          </div></a></td>
+        <td>{{ job.Ratings }}</td>
+        <td><button data-latex="{{ job.cl }}">Download Cover Letter</button></td>
       </tr>
       {% endfor %}
   </tbody>
 </table>
 
 
+<script>
+    // When the user clicks on div, open the popup
+    function myFunction() {
+      var popup = document.getElementById("myPopup");
+      popup.classList.toggle("show");
+    }
+    </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("button[data-latex]").click(function() {
+            const latexCode = $(this).data("latex"); // Get the LaTeX code from the button attribute
+            const url = "/convert-to-pdf"; // Your Flask route for conversion
+
+            // Send AJAX request to convert the LaTeX code to PDF
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: latexCode,
+                contentType: "text/plain",
+                success: function(response) {
+                    // Handle successful response (download or embed)
+                    if (typeof response === "string") { // Assuming response is a URL for embedding
+                        $("#cover-letter-container").html(response); // Update a container element (optional)
+                    } else {
+                        const blob = new Blob([response], { type: "application/pdf" });
+                        const url = window.URL.createObjectURL(blob);
+                        const link = document.createElement("a");
+                        link.href = url;
+                        link.download = "cover_letter.pdf";
+                        link.click();
+                    }
+                },
+                error: function(error) {
+                    console.error("Error converting PDF:", error);
+                    // Handle errors gracefully (e.g., display an error message)
+                }
+            });
+        });
+    });
+</script>
+
 
 
 {% endblock %}
+

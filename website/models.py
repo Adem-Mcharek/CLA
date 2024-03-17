@@ -25,6 +25,11 @@ class Job(db.Model):
     Date = db.Column(db.String(255))
     Application = db.Column(db.Integer)
     Link = db.Column(db.String(255))
+    info = db.Column(db.Text)
+    Ratings = db.Column(db.Integer)
+    cl = db.Column(db.Text)
+
+
 
 
 
