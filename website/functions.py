@@ -61,15 +61,14 @@ def run_thread(assistant_id,thread_id ):
     return client.beta.threads.runs.create(
         thread_id=thread_id,
         assistant_id=assistant_id,
-        instructions= ' make sure to output everything in the message, I cant see the files you create ' 
     )
 
-def wait_on_run(run, thread):
+def wait_on_run(run, thread_id, run_id):
     while run.status in ['queued', 'in_progress', 'cancelling']:
         time.sleep(2)
         run = client.beta.threads.runs.retrieve(
-            thread_id=thread.id,
-            run_id=run.id,
+            thread_id=thread_id,
+            run_id=run_id,
         )
     return run
 
@@ -87,19 +86,21 @@ def pretty_print(messages):
 
 
 def pretty_file(messages, index):
-     with open(f'tex/{index}.tex', 'w', encoding="utf-8") as f:
+     with open(f'Text/{index}.tex', 'w', encoding="utf-8") as f:
         for m in messages:
             if m.role == 'assistant':
                 for l in m.content[0].text.value :
                     f.write(f"{l}")
+                    
+                    print('/endl')
+                    print('/kkk')
+                
             
-            
-   
 
 
-def get_response(thread):
+def get_response(thread_id):
 
-    thread_message= client.beta.threads.messages.list(thread_id=thread.id, order="asc")
+    thread_message= client.beta.threads.messages.list(thread_id=thread_id, order="asc")
 
     return  thread_message
 

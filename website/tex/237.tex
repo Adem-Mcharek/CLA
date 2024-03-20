@@ -1,0 +1,47 @@
+\documentclass[]{cover}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\rfoot{Page \thepage \hspace{1pt}}
+\thispagestyle{empty}
+\renewcommand{\headrulewidth}{0pt}
+\begin{document}
+
+% Header section with personal information
+\namesection{Adem}{Mcharek}{
+    \urlstyle{same}\href{https://github.com/adem-mcharek}{Github} |
+    \urlstyle{same}\href{https://linkedin.com/in/adem-mcharek}{Linkedin} |
+    +1 929-527-4331 |
+    adem.mcharek@my.liu.edu
+}
+
+% Main cover letter content starts here
+\hfill
+
+\begin{minipage}[t]{0.5\textwidth}
+\companyname{NVIDIA Corporation}
+\companyaddress{
+Santa Clara, California
+}
+\end{minipage}
+
+\begin{minipage}[t]{0.49\textwidth}
+\currentdate{\today}
+\end{minipage}
+
+% Introduction and expression of interest
+\lettercontent{Dear Hiring Manager,}
+
+\lettercontent{I am writing to express my interest in the 2024 NVIDIA Artificial Intelligence Engineering internship program. With a solid educational background and hands-on experience in a variety of programming languages and technologies, including Python, C++, PyTorch, and TensorFlow among others, I am excited about the opportunity to work on cutting-edge projects with tangible business impact at NVIDIA.}
+
+% Customized content based on Adem Mcharek's experiences
+\lettercontent{During my academic pursuits and projects, I have honed my skills in developing algorithms for deep learning and scientific computing. My experience in analyzing and enhancing GPU implementations aligns well with the responsibilities outlined, such as developing and training Deep Neural Networks for innovative applications. Additionally, my contributions to open-source projects showcase my commitment to innovation and collaboration within the tech industry.}
+
+% Conclusion and signature
+\lettercontent{I am eager to leverage my skills and knowledge to contribute meaningfully to the AI initiatives at NVIDIA. I am confident that my background in relevant fields positions me well to excel in this internship opportunity. Thank you for considering my application.}
+
+\signature{Adem Mcharek}
+
+\end{document}

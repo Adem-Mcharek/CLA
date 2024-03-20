@@ -1,105 +1,50 @@
-To create a LaTeX file based on the information provided about Astranis Space Technologies and the job posting for the Software Developer, Network/Payload Software Intern position, I will combine the company overview, growth insights, requirements, responsibilities, desired qualifications, and internship details into a comprehensive document. 
+\documentclass[]{cover}
+\usepackage{fancyhdr}
 
-Let's proceed with compiling the LaTeX code.Based on the information provided, I will now compile the LaTeX document containing the details about Astranis Space Technologies and the job posting for the Software Developer, Network/Payload Software Intern position.
+\pagestyle{fancy}
+\fancyhf{}
 
-Let's proceed with creating the LaTeX file.\documentclass{article}
-\usepackage[utf8]{inputenc}
-\usepackage{hyperref}
-\title{Astranis Space Technologies - Software Developer Intern Application}
+\rfoot{Page \thepage \hspace{1pt}}
+\thispagestyle{empty}
+\renewcommand{\headrulewidth}{0pt}
 \begin{document}
 
-\maketitle
+% Header section with personal information
+\namesection{Adem}{Mcharek}{
+    \urlstyle{same}\href{https://github.com/adem-mcharek}{Github} |
+    \urlstyle{same}\href{https://linkedin.com/in/adem-mcharek}{Linkedin} |
+    +1 929-527-4331 |
+    adem.mcharek@my.liu.edu
+}
 
-\section{Company Overview}
-Astranis Space Technologies is a leader in the telecommunications industry, specializing in the creation of small, cost-effective satellites aimed at providing internet access to the 4 billion people globally who are currently without. The company's unique satellite broadband networks offer unparalleled capabilities, attracting both commercial and government customers. Astranis has partnered with industry players like Orbits Corp, Pacific Dataport, Grupo Andesat, and Anuvu to expand its global reach and bring high-speed internet to underserved communities.
+% Main cover letter content starts here
+\hfill
 
-\section{Company Details}
-\begin{itemize}
-    \item Stage: Series C
-    \item Total Funding: \$555.3 million
-    \item Founded: 2015
-    \item Headquarters: San Francisco, California
-    \item Headcount Growth: 
-    \begin{itemize}
-        \item 6-month growth: 4\%
-        \item 1-year growth: 12\%
-        \item 2-year growth: 37\%
-    \end{itemize}
-\end{itemize}
+\begin{minipage}[t]{0.5\textwidth}
+\companyname{Astranis Space Technologies}
+\companyaddress{
+San Francisco, California
+}
+\end{minipage}
 
-\section{Internship Position - Software Developer, Network/Payload Software}
-\subsection{Responsibilities}
-\begin{itemize}
-    \item Work with the engineering team to design, write, and test software for satellites, ground control, and testing software
-    \item Develop software to manage satellite performance from Ground Stations
-\end{itemize}
+\begin{minipage}[t]{0.49\textwidth}
+\currentdate{\today}
+\end{minipage}
 
-\subsection{Requirements}
-\begin{itemize}
-    \item Pursuing a B.S. or M.S. in Computer Science, Electrical or Computer Engineering, Aerospace, or equivalent technical degree
-    \item Experience with C++, Python, and scripting languages
-    \item Demonstrated ability to design, write, and test software from scratch
-    \item U.S. Citizenship or Green Card
-    \item Must be onsite in San Francisco for a minimum of 3 days a week
-\end{itemize}
+% Introduction and expression of interest
+\lettercontent{Dear Hiring Manager,}
 
-\subsection{Desired Qualifications}
-\begin{itemize}
-    \item Experience with RF and Signal processing
-    \item Experience with real-time operating systems
-\end{itemize}
+\lettercontent{I am writing to express my strong interest in the Software Developer, Network/Payload Software Intern position at Astranis Space Technologies as advertised. With a background in Computer Science and a keen passion for space technology and satellite communications, I am excited about the opportunity to contribute to Astranis' mission of bridging the digital divide and connecting communities globally.}
 
-The base pay for this position is \$29.00 per hour. U.S. Citizenship, Lawful Permanent Residency, or Refugee/Asylee Status is required.
+\lettercontent{I am currently pursuing a Bachelor's degree in Computer Science at [University], where I have gained proficiency in C++, Python, and scripting languages. Through my academic projects and internships, I have honed my skills in designing, writing, and testing software from scratch, aligning closely with the responsibilities outlined for this role.}
 
-\subsection{Application Details}
-\begin{itemize}
-    \item Apply even if you do not meet all criteria
-\end{itemize}
+\lettercontent{Being part of a company that not only excels in technological innovation but also prioritizes social impact is highly motivating to me. Astranis' dedication to bringing high-speed internet to underserved areas resonates with my values of using technology for the betterment of society. I am particularly intrigued by the opportunity to work on software that manages satellite performance from ground stations, a role that perfectly combines my technical skills and passion for space technology.}
 
-\section{About the Applicant}
-\begin{itemize}
-    \item Name: Ahmed Mansour Bourassine
-    \item Education: Bachelor in Artificial Intelligence from Long Island University, with a GPA of 3.88/4.00
-    \item Relevant Courses: Machine Learning, Deep Learning, Statistics, Physics, Data Mining, etc.
-    \item Projects: AI Research Assistant, PyTorch CNN for MNIST, Computer Vision using TensorFlow
-    \item Skills: Python, MySQL, Pytorch, Tensorflow, C++, JavaScript, Unity
-\end{itemize}
+\lettercontent{Furthermore, my familiarity with RF and signal processing, along with my exposure to real-time operating systems, positions me well to contribute effectively to Astranis' projects and initiatives. I am eager to collaborate with the talented engineering team at Astranis and actively participate in the development of cutting-edge software solutions for satellite communication networks.}
 
-\section{Cover Letters}
-\subsection{Morgan Stanley}
-\subsubsection{Excerpt}
-\begin{quote}
-"Currently studying at Ecole Polytechnique, I believe that my strong analytical and numerical skills align seamlessly with the high standards upheld by Morgan Stanley."
-\end{quote}
+\lettercontent{I am thrilled about the prospect of joining Astranis Space Technologies and contributing to its groundbreaking work in revolutionizing satellite technology for global connectivity. Thank you for considering my application. I look forward to the possibility of discussing how my skills and experiences align with Astranis' goals in further detail.}
 
-\subsection{QRT}
-\subsubsection{Excerpt}
-\begin{quote}
-"My experiences ranging from optimizing genetic algorithms to modeling electric scooter infrastructure have equipped me with a deep analytical rigor that I believe would be invaluable to QRT."
-\end{quote}
+% Conclusion and signature
+\signature{Adem Mcharek}
 
-\subsection{JPMorgan}
-\subsubsection{Excerpt}
-\begin{quote}
-"My academic journey at Ecole Polytechnique has equipped me with a versatile skill set which I've had the opportunity to refine during esteemed internships."
-\end{quote}
-
-\subsection{DRW}
-\subsubsection{Excerpt}
-\begin{quote}
-"During my academic journey, I've been fortunate to take on projects such as optimizing algorithms and modeling for electric scooter infrastructure."
-\end{quote}
-
-\subsection{Jump Trading}
-\subsubsection{Excerpt}
-\begin{quote}
-"I am enthusiastic about the prospect of integrating my technical capabilities into the intricate world of trading."
-\end{quote}
-
-\end{document}The LaTeX code has been compiled with the information provided about Astranis Space Technologies and the job posting for the Software Developer, Network/Payload Software Intern position, along with details about the applicant and excerpts from cover letters for various companies.
-
-I will now save this LaTeX code to a file.The LaTeX file for the Astranis Space Technologies - Software Developer Intern application has been created. You can download the file using the following link:
-
-[Astranis Space Technologies - Software Developer Intern Application.tex](sandbox:/mnt/data/Astranis_Space_Technologies_Software_Developer_Intern_Application.tex) 
-
-Feel free to download the file and let me know if you need any further assistance.
+\end{document}

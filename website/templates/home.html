@@ -30,7 +30,7 @@
         a:hover {
             text-decoration: underline; /* Add underline on hover for links */
         }
-
+        /*-------------------------------------------*/
         /* Popup container - can be anything you want */
         .popup {
         position: relative;
@@ -88,10 +88,49 @@
         to {opacity:1 ;}
         }
 
+
+         /* Additional Styles for CSS-only Popup */
+         .popupInfo {
+            display: none;
+            position: fixed; 
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            padding: 20px;
+            background: #FFF;
+            border: 2px solid #ddd;
+            box-shadow: 0 0 10px rgba(0,0,0,.2);
+        }
+
+        .popupInfo:target {
+            display: block;
+            /* Show the popup when targeted using :target pseudo-class */
+        }
+
+        .overlay:target + .popupInfo,
+        .overlay:target {
+            display: none;
+        }
+
+        .overlay {
+            position: fixed;
+            display: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(0,0,0,.7);
+            z-index: 5;
+        }
+        
+        
+
     </style>
 </head>
 
 <h1 align="center">listings :</h1>
+
 
 
 
@@ -118,60 +157,39 @@
           <td>{{ job.Role }}</td>
           <td>{{ job.Location }}</td>
           <td>{{ job.Date }}</td>
-          <td><a href="{{ job.Application }}">Link</a></td>
-        <td><a href="{{ job.Link }}">Link</a></td>
-        <td><div class="popup" onclick="myFunction()">Click me!
-            <span class="popuptext" id="myPopup">{{ job.info }}</span>
-          </div></a></td>
-        <td>{{ job.Ratings }}</td>
-        <td><button data-latex="{{ job.cl }}">Download Cover Letter</button></td>
+          <td><a href="{{ job.Application }}" target="_blank">Link</a></td>
+          <td><a href="{{ job.Link }}" target="_blank">Link</a></td>
+          <td><div class="popup" onclick="myFunction('{{ job.id }}')">Job Info
+            <span class="popuptext" id="popup{{ job.id }}">{{ job.info }}</span>
+          </div></td>
+          <td>{{ job.Ratings }}</td>
+          <td><a href="download/{{ job.id }} " >Download Cover Letter</a></td>
+
+          <!-- <td><a href="http://127.0.0.1:5000/download/{{ job.id }}" target="_blank">Download Cover Letter</a></td> -->
+        <!-- #<a href="http://127.0.0.1:5000//download/{{ job.cl }}" target="_blank">Download Cover Letter</a> -->
+        <!-- <button data-latex="{{ job.cl }}">Download Cover Letter</button> -->
+
       </tr>
       {% endfor %}
   </tbody>
 </table>
 
 
+
+
+
 <script>
-    // When the user clicks on div, open the popup
-    function myFunction() {
-      var popup = document.getElementById("myPopup");
+   function myFunction(jobId) {
+      var popupId = "popup" + jobId;
+      var popup = document.getElementById(popupId);
       popup.classList.toggle("show");
     }
-    </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $("button[data-latex]").click(function() {
-            const latexCode = $(this).data("latex"); // Get the LaTeX code from the button attribute
-            const url = "/convert-to-pdf"; // Your Flask route for conversion
-
-            // Send AJAX request to convert the LaTeX code to PDF
-            $.ajax({
-                url: url,
-                type: "POST",
-                data: latexCode,
-                contentType: "text/plain",
-                success: function(response) {
-                    // Handle successful response (download or embed)
-                    if (typeof response === "string") { // Assuming response is a URL for embedding
-                        $("#cover-letter-container").html(response); // Update a container element (optional)
-                    } else {
-                        const blob = new Blob([response], { type: "application/pdf" });
-                        const url = window.URL.createObjectURL(blob);
-                        const link = document.createElement("a");
-                        link.href = url;
-                        link.download = "cover_letter.pdf";
-                        link.click();
-                    }
-                },
-                error: function(error) {
-                    console.error("Error converting PDF:", error);
-                    // Handle errors gracefully (e.g., display an error message)
-                }
-            });
-        });
-    });
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+
+
+
 
 
 

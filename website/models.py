@@ -27,7 +27,7 @@ class Job(db.Model):
     Link = db.Column(db.String(255))
     info = db.Column(db.Text)
     Ratings = db.Column(db.Integer)
-    cl = db.Column(db.Text)
+    CL = db.Column(db.LargeBinary)
 
 
 
@@ -40,5 +40,4 @@ class Rating(db.Model):
     UID = db.Column(db.Integer)
     CID = db.Column(db.Integer)
     Mscore = db.Column(db.Float)
-    CL = db.Column(db.TEXT )
     UID = db.Column(db.Integer, db.ForeignKey('user.id'))

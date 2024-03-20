@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, jsonify
+from flask import Blueprint, render_template, request, flash, jsonify, send_file
 from flask_login import login_required, current_user
 from .models import Job
 from . import db
@@ -6,7 +6,7 @@ import json
 import os 
 import time
 import subprocess
-from io import StringIO
+from io import StringIO , BytesIO
 
 
 
@@ -36,7 +36,8 @@ views = Blueprint('views', __name__)
 @login_required
 def home():
 
-    all_jobs = Job.query.order_by(Job.Ratings.desc()).limit(5).all()
+    # all_jobs = Job.query.order_by(Job.Ratings.desc()).limit(15).all()
+    all_jobs = Job.query.order_by(Job.id.desc()).all()
     return render_template('home.html', jobs=all_jobs, user=current_user)
 
  
@@ -52,6 +53,11 @@ def delete_note():
             db.session.commit()
 
     return jsonify({})
+
+@views.route('/download/<id>')
+def download(id):
+    download = Job.query.filter_by(id=id).first()
+    return send_file(BytesIO(download.CL), download_name=f"{download.Company}.pdf", as_attachment=True )
 
 
 
@@ -99,39 +105,3 @@ os.makedirs(TEMP_DIR, exist_ok=True)  # Create directory if it doesn't exist
     
 
 
-@views.route("/convert-to-pdf", methods=["POST"])
-def convert_to_pdf():
-    try:
-        # Receive LaTeX code from the client
-        latex_code = request.data.decode("utf-8")
-        print(latex_code)
-
-        # Create an in-memory string buffer for LaTeX code
-        latex_buffer = StringIO(latex_code)
-
-        # Execute the PDF conversion process using subprocess and capture output
-        process = subprocess.Popen(
-            ["pdflatex", "-halt-on-error", "-"],
-            stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
-        )
-        stdout, stderr = process.communicate(input=latex_buffer.getvalue().encode())
-
-        # Check for successful execution (exit code 0)
-        if process.returncode != 0:
-            raise Exception(f"PDF generation failed: {stderr.decode()}")
-
-        # Assuming successful conversion, return the PDF content
-        return_type = request.args.get("return_type", "download")
-        if return_type == "download":
-            return Response(stdout, mimetype="application/pdf", headers={"Content-Disposition": "attachment;filename=cover_letter.pdf"})
-        elif return_type == "embed":
-            # Not recommended for large PDFs due to performance impact
-            return f"<iframe src='data:application/pdf;base64,{base64.b64encode(stdout).decode()}' width='800' height='600'></iframe>"
-        else:
-            return "Invalid return type", 400
-
-    except Exception as e:
-        print(f"Error during conversion: {e}")
-        return "PDF generation failed. Please try again later.", 500

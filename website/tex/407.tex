@@ -1,0 +1,49 @@
+\documentclass[]{cover}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\rfoot{Page \thepage \hspace{1pt}}
+\thispagestyle{empty}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+
+% Header section with personal information
+\namesection{Adem}{Mcharek}{
+    \urlstyle{same}\href{https://github.com/adem-mcharek}{Github} |
+    \urlstyle{same}\href{https://linkedin.com/in/adem-mcharek}{Linkedin} |
+    +1 929-527-4331 |
+    adem.mcharek@my.liu.edu
+}
+
+% Main cover letter content starts here
+\hfill
+
+\begin{minipage}[t]{0.5\textwidth}
+\companyname{Cohere Health at Astranis Space Technologies}
+\companyaddress{
+San Francisco, California
+}
+\end{minipage}
+
+\begin{minipage}[t]{0.49\textwidth}
+\currentdate{\today}
+\end{minipage}
+
+% Introduction and expression of interest
+\lettercontent{Dear Hiring Manager,}
+
+\lettercontent{I am writing to express my interest in the position at Cohere Health within Astranis Space Technologies, particularly drawn to the opportunity to build impactful healthcare technology and contribute to feature design, development, and testing of the cloud platform and web applications. With a background as an AI Research Assistant at LIU Brooklyn, where I orchestrated an AI Research Assistant for academic literature retrieval using RAG, and experience developing a PyTorch CNN for MNIST with optimized hyperparameters for competitive accuracy, I possess a strong foundation in technology and data analysis.}
+
+\lettercontent{My familiarity with common software development practices, including version control and unit testing, aligns with the requirements of the role. Moreover, my hands-on experience in application security principles and tools like Burp Suite and code scanning solutions such as Sonar Qube and Fortify from my academic and research background prepare me well to actively participate in ensuring healthcare security at Cohere Health.}
+
+\lettercontent{The opportunity to work in a fast-paced, autonomous, and agile team building a growing software platform resonates with my aspirations of leveraging technology for impactful solutions. I am excited about the chance to contribute across all parts of the platform, from the database to the frontend, and to discover and implement new technologies to enhance development efficiency.}
+
+% Conclusion and signature
+\lettercontent{I am eager to bring my skills and experiences to Cohere Health and am enthusiastic about the possibility of contributing to your team. I look forward to the opportunity to discuss how I can be an asset to your ambitious endeavors.}
+
+\signature{Adem Mcharek}
+
+\end{document}

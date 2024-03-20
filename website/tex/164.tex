@@ -1,0 +1,49 @@
+\documentclass[]{cover}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\rfoot{Page \thepage \hspace{1pt}}
+\thispagestyle{empty}
+\renewcommand{\headrulewidth}{0pt}
+\begin{document}
+
+% Header section with personal information
+\namesection{Adem}{Mcharek}{
+    \urlstyle{same}\href{https://github.com/adem-mcharek}{Github} |
+    \urlstyle{same}\href{https://linkedin.com/in/adem-mcharek}{Linkedin} |
+    +1 929-527-4331 |
+    adem.mcharek@my.liu.edu
+}
+
+% Main cover letter content starts here
+\hfill
+
+\begin{minipage}[t]{0.5\textwidth}
+\companyname{NVIDIA Corporation}
+\companyaddress{
+Santa Clara, California
+}
+\end{minipage}
+
+\begin{minipage}[t]{0.49\textwidth}
+\currentdate{\today}
+\end{minipage}
+
+% Introduction and expression of interest
+\lettercontent{Dear Hiring Manager,}
+
+\lettercontent{I am writing to express my interest in the Automotive SOC Product Architecture Intern position at NVIDIA, as advertised. With a strong educational background and practical experience, I am excited about the opportunity to contribute to the innovative work being done at NVIDIA.}
+
+% Tailored content based on Adem Mcharek's qualifications
+\lettercontent{Currently pursuing a Master's degree in Computer Engineering, I have developed a solid foundation in computer architecture and machine learning, aligning well with the requirements of the role. My expertise includes working with Python, deep learning frameworks such as TensorFlow and PyTorch, as well as proficiency in C and C++ programming. Moreover, my hands-on experience in hardware architecture and performance analysis further complements my skill set.}
+
+\lettercontent{In my previous roles, I have investigated AI and graphics workloads, defined test programs, and conducted benchmarking activities to analyze competitor devices, closely resembling the responsibilities outlined for the position. Additionally, my exposure to autonomous driving technologies and graphics development provides me with a valuable perspective to contribute effectively to NVIDIA's projects.}
+
+% Conclusion and signature
+\lettercontent{I am eager to bring my knowledge and enthusiasm to the Automotive SOC Product Architecture Intern role at NVIDIA. I am confident in my ability to support the team in defining competitive positioning and delivering cutting-edge products. Thank you for considering my application.}
+
+\signature{Adem Mcharek}
+
+\end{document}
