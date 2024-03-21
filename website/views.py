@@ -37,7 +37,7 @@ views = Blueprint('views', __name__)
 def home():
 
     # all_jobs = Job.query.order_by(Job.Ratings.desc()).limit(15).all()
-    all_jobs = Job.query.order_by(Job.id.desc()).all()
+    all_jobs = Job.query.order_by(Job.Ratings.desc()).all()
     return render_template('home.html', jobs=all_jobs, user=current_user)
 
  
